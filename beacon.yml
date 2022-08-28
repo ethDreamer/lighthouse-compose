@@ -1,0 +1,22 @@
+version: '3'
+services:
+  beacon:
+    build:
+      context: ./lighthouse/build
+      args:
+        BASE_IMAGE:  'sigp/lighthouse:latest'
+        PROCESS_UID: 1000
+        PROCESS_GID: 1000
+    environment:
+      - CONSENSUS_DISC
+    ports:
+      - "${CONSENSUS_DISC}:${CONSENSUS_DISC}/tcp"
+      - "${CONSENSUS_DISC}:${CONSENSUS_DISC}/udp"
+    expose:
+      - 5052
+    volumes:
+      - ./lighthouse/beacon/run:/home/consensus/run
+      - ./shared:/shared
+    depends_on:
+      - execution
+

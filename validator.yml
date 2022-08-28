@@ -1,0 +1,16 @@
+version: '3'
+services:
+  validator:
+    build:
+      context: ./lighthouse/build
+      args:
+        BASE_IMAGE:  'sigp/lighthouse:latest'
+        PROCESS_UID: 1000
+        PROCESS_GID: 1000
+    environment:
+        - SINGLE_VALIDATOR_PASS
+        - METRICS_ENABLED
+    volumes:
+      - ./lighthouse/validator/run:/home/consensus/run
+    depends_on:
+      - beacon

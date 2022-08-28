@@ -1,0 +1,23 @@
+version: "3"
+services:
+  beacon:
+    environment:
+      - MEVBOOST_ENABLED=true
+  validator:
+    environment:
+      - MEVBOOST_ENABLED=true
+  mev-boost:
+    build:
+      context: ./mev-boost/build
+      args:
+        BASE_IMAGE:  'flashbots/mev-boost'
+        PROCESS_UID: 1000
+        PROCESS_GID: 1000
+    expose:
+      - 8560
+    volumes:
+      - ./mev-boost/run:/home/boost/run
+    depends_on:
+      - execution
+      - beacon
+
