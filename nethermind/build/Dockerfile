@@ -1,4 +1,4 @@
-FROM hyperledger/besu:22.7.1
+FROM nethermindeth/nethermind:latest
 
 USER root
 RUN apt update && apt install -y tini dnsutils

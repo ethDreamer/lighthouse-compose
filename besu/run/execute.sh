@@ -23,7 +23,7 @@ exec besu \
     --p2p-host=$WANIP \
     --p2p-port=$EXECUTION_DISC \
     --nat-method=DOCKER \
-    --sync-mode=X_CHECKPOINT \
+    --sync-mode=X_SNAP \
     --engine-rpc-enabled \
     --engine-host-allowlist="*" \
     --engine-jwt-enabled=true \

@@ -4,7 +4,6 @@ services:
     build:
       context: ./${EXECUTION_NODE}/build
       args:
-        BASE_IMAGE:  'hyperledger/besu:22.7.1'
         PROCESS_UID: 1000
         PROCESS_GID: 1000
     environment:

@@ -10,11 +10,5 @@ export SINGLE_VALIDATOR_PASS=true
 export PROMETHEUS_PORT=9090 # port to serve prometheus front-end
 export GRAFANA_PORT=3000    # port to serve grafana front-end
 
-export POSTGRES_PASSWORD=pass
-export POSTGRES_USER=pguser
-export POSTGRES_DB=db
-export EXPLORER_PORT=3333 # the port to serve the front-end for the beacon explorer
-
-#mkdir -p explorer/run/postgres/db
 
 

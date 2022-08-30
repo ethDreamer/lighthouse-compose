@@ -8,7 +8,7 @@ scrape_configs:
   - job_name: 'validator'
     static_configs:
       - targets: ['validator:5064']
-  - job_name: 'besu'
+  - job_name: 'execution'
     static_configs:
       - targets: ['execution:6060']
 
