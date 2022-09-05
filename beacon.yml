@@ -1,4 +1,4 @@
-version: '3'
+version: '3.3'
 services:
   beacon:
     build:
@@ -12,8 +12,7 @@ services:
     ports:
       - "${CONSENSUS_DISC}:${CONSENSUS_DISC}/tcp"
       - "${CONSENSUS_DISC}:${CONSENSUS_DISC}/udp"
-    expose:
-      - 5052
+      - "127.0.0.1:5052:5052"
     volumes:
       - ./lighthouse/beacon/run:/home/consensus/run
       - ./shared:/shared
