@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [ "$SINGLE_VALIDATOR_PASS" = "true" ]; then
-    VALIDATOR_PASS_FILE=./datadir/secrets/validator_pass
-    while [ ! -f $VALIDATOR_PASS_FILE ]; do
-        echo "validator password file not found.. sleeping for 5 seconds"
-        sleep 5
+if [ "$ENCRYPTED_SECRETS_DIRECTORY" = "true" ]; then
+    SECRETS_MOUNT_TEST_FILE=./datadir/secrets/.mounted
+    while [ ! -f $SECRETS_MOUNT_TEST_FILE ]; do
+        echo "validator secrets not mounted.. sleeping for 2 seconds"
+        sleep 2
     done
 fi
 
@@ -24,12 +24,14 @@ exec lighthouse \
     --network mainnet \
     validator_client \
     --http \
-    --http-port 5062 \
-    --http-address=0.0.0.0 \
     --unencrypted-http-transport \
+    --http-address=0.0.0.0 \
+    --http-port 5062 \
     --http-allow-origin \* \
     $(printf '%s' "$METRICS_ARG") \
     --init-slashing-protection \
     --beacon-nodes http://beacon:5052 \
     $BUILDER_ARG
 
+#    --http-allow-keystore-export \
+#    --http-store-passwords-in-secrets-dir \

@@ -1,4 +1,4 @@
-version: '3'
+version: '3.3'
 services:
   validator:
     build:
@@ -8,9 +8,13 @@ services:
         PROCESS_UID: 1000
         PROCESS_GID: 1000
     environment:
-        - SINGLE_VALIDATOR_PASS
+        - ENCRYPTED_SECRETS_DIRECTORY
         - METRICS_ENABLED
     volumes:
-      - ./lighthouse/validator/run:/home/consensus/run
+      - type: bind
+        source: ./lighthouse/validator/run
+        target: /home/consensus/run
+        bind:
+          propagation: rslave
     depends_on:
       - beacon
