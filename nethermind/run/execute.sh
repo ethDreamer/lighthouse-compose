@@ -9,12 +9,12 @@ echo "******************** STARTING NETHERMIND ********************"
 exec /nethermind/Nethermind.Runner \
     --config=mainnet \
     --datadir="./datadir" \
-	--JsonRpc.Enabled=true \
-	--JsonRpc.EnabledModules="net,eth,consensus,subscribe,web3,admin,rpc" \
-	--JsonRpc.Port=8545 \
-	--JsonRpc.Host=0.0.0.0 \
-	--Network.DiscoveryPort=${EXECUTION_DISC} \
-	--Network.P2PPort=${EXECUTION_DISC} \
+    --JsonRpc.Enabled=true \
+    --JsonRpc.EnabledModules="net,eth,consensus,subscribe,web3,admin,rpc" \
+    --JsonRpc.Port=8545 \
+    --JsonRpc.Host=0.0.0.0 \
+    --Network.DiscoveryPort=${EXECUTION_DISC} \
+    --Network.P2PPort=${EXECUTION_DISC} \
     --JsonRpc.JwtSecretFile=/shared/jwt.secret \
     --Sync.SnapSync true \
     --Merge.Enabled true \
