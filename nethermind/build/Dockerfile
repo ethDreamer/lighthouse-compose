@@ -1,4 +1,4 @@
-FROM nethermindeth/nethermind:latest
+FROM nethermind/nethermind:latest
 
 USER root
 RUN apt update && apt install -y tini dnsutils
