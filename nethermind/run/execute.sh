@@ -10,15 +10,16 @@ exec /nethermind/Nethermind.Runner \
     --config=mainnet \
     --datadir="./datadir" \
     --JsonRpc.Enabled=true \
-    --JsonRpc.EnabledModules="net,eth,consensus,subscribe,web3,admin,rpc" \
+    --JsonRpc.EnabledModules="net,eth,consensus,subscribe,web3,admin,rpc,parity" \
     --JsonRpc.Port=8545 \
     --JsonRpc.Host=0.0.0.0 \
     --Network.DiscoveryPort=${EXECUTION_DISC} \
     --Network.P2PPort=${EXECUTION_DISC} \
     --JsonRpc.JwtSecretFile=/shared/jwt.secret \
-    --Sync.SnapSync true \
-    --Merge.Enabled true \
+    --Sync.SnapSync=true \
+    --Mev.Enabled=true \
+    --Merge.Enabled=true \
     --Merge.TerminalTotalDifficulty 58750000000000000000000 \
-    --JsonRpc.AdditionalRpcUrls="http://0.0.0.0:8560|http;ws|engine;eth;net;subscribe;web3;client" \
+    --JsonRpc.AdditionalRpcUrls="http://0.0.0.0:8560|http;ws|engine;eth;net;subscribe;web3;client;parity" \
     $METRICS_ARG
 

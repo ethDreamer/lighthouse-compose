@@ -17,10 +17,12 @@ fi
 echo "******************** STARTING LIGHTHOUSE BEACON NODE ********************"
 
 exec lighthouse \
+    --log-color \
     --debug-level=info \
     --datadir ./datadir \
     --network mainnet \
     beacon \
+    --prune-payloads false \
     --eth1 \
     --http \
     --discovery-port $CONSENSUS_DISC \
