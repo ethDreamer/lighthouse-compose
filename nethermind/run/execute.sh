@@ -20,6 +20,10 @@ exec /nethermind/Nethermind.Runner \
     --Mev.Enabled=true \
     --Merge.Enabled=true \
     --Merge.TerminalTotalDifficulty 58750000000000000000000 \
+    --Pruning.Mode=Hybrid \
+    --Pruning.FullPruningTrigger=VolumeFreeSpace \
+    --Pruning.FullPruningThresholdMb=400000 \
+    --Pruning.FullPruningMemoryBudgetMb=16384 \
     --JsonRpc.AdditionalRpcUrls="http://0.0.0.0:8560|http;ws|engine;eth;net;subscribe;web3;client;parity" \
     $METRICS_ARG
 

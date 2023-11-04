@@ -4,9 +4,9 @@ services:
     build:
       context: ./lighthouse/build
       args:
-        BASE_IMAGE:  'sigp/lighthouse:latest'
-        PROCESS_UID: 1000
-        PROCESS_GID: 1000
+        BASE_IMAGE:  $LIGHTHOUSE_IMAGE
+        PROCESS_UID: $BEACON_UID
+        PROCESS_GID: $BEACON_GID
     environment:
       - CONSENSUS_DISC
     ports:
@@ -18,4 +18,10 @@ services:
       - ./shared:/shared
     depends_on:
       - execution
+    networks:
+      - lighthouse_stake
 
+networks:
+  lighthouse_stake:
+    name: lighthouse_stake
+    driver: bridge

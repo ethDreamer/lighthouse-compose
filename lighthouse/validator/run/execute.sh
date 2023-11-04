@@ -16,6 +16,11 @@ if [ "$MEVBOOST_ENABLED" = "true" ]; then
     BUILDER_ARG="--private-tx-proposals"
 fi
 
+VALIDATOR_MANAGER=false
+if [ "$VALIDATOR_MANAGER" = "true" ]; then
+    VM_ARGS="--http-allow-keystore-export --http-store-passwords-in-secrets-dir"
+fi
+
 echo "******************* STARTING LIGHTHOUSE VALIDATOR NODE *******************"
 
 exec lighthouse \
@@ -31,7 +36,6 @@ exec lighthouse \
     $(printf '%s' "$METRICS_ARG") \
     --init-slashing-protection \
     --beacon-nodes http://beacon:5052 \
+    $VM_ARGS \
     $BUILDER_ARG
 
-#    --http-allow-keystore-export \
-#    --http-store-passwords-in-secrets-dir \

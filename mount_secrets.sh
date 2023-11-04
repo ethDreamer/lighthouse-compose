@@ -74,7 +74,7 @@ if [ ! -e $LOOPBACK ]; then
 fi
 
 {
-    # unmount volume of mounted
+    # unmount volume if mounted
     cryptsetup status $VOLUME > /dev/null && \
         {
             grep -qs "/dev/mapper/${VOLUME}" /proc/mounts && \
@@ -88,13 +88,17 @@ fi
     if [ ! -d $MNTPOINT ]; then
         mkdir -p $MNTPOINT
     fi
+
+    if [ -z ${$VALIDATOR_UID} ]; then
+        echo "Must run \`source ./globals.sh\` before mounting"
+        exit 1
+    fi
+
     cryptsetup luksOpen $LOOPBACK ${VOLUME} && \
         mount /dev/mapper/${VOLUME} $MNTPOINT && \
         mount --make-shared $MNTPOINT && {
-            PROCESS_UID=$(cat $SCRIPT_DIR/validator.yml | grep "PROCESS_UID" | awk '{ print $2 }')
-            PROCESS_GID=$(cat $SCRIPT_DIR/validator.yml | grep "PROCESS_GID" | awk '{ print $2 }')
-            chown -R ${PROCESS_UID}:${PROCESS_GID} $DATADIR 2>/dev/null;
-            chown -R ${PROCESS_UID}:${PROCESS_GID} $MNTPOINT 2>/dev/null;
+            chown -R ${VALIDATOR_UID}:${VALIDATOR_GID} $DATADIR 2>/dev/null;
+            chown -R ${VALIDATOR_UID}:${VALIDATOR_GID} $MNTPOINT 2>/dev/null;
         } && \
         echo "Successfully mounted ${VOLUME}";
 }

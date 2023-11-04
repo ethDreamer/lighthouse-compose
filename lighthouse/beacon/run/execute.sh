@@ -22,7 +22,6 @@ exec lighthouse \
     --datadir ./datadir \
     --network mainnet \
     beacon \
-    --prune-payloads false \
     --eth1 \
     --http \
     --discovery-port $CONSENSUS_DISC \

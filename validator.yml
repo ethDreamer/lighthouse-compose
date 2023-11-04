@@ -4,9 +4,9 @@ services:
     build:
       context: ./lighthouse/build
       args:
-        BASE_IMAGE:  'sigp/lighthouse:latest'
-        PROCESS_UID: 1000
-        PROCESS_GID: 1000
+        BASE_IMAGE:  $LIGHTHOUSE_IMAGE
+        PROCESS_UID: $VALIDATOR_UID
+        PROCESS_GID: $VALIDATOR_GID
     environment:
         - ENCRYPTED_SECRETS_DIRECTORY
         - METRICS_ENABLED
@@ -18,3 +18,5 @@ services:
           propagation: rslave
     depends_on:
       - beacon
+    networks:
+      - lighthouse_stake
