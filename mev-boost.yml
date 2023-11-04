@@ -10,9 +10,9 @@ services:
     build:
       context: ./mev-boost/build
       args:
-        BASE_IMAGE:  'flashbots/mev-boost'
-        PROCESS_UID: 1000
-        PROCESS_GID: 1000
+        BASE_IMAGE:  $MEVBOOST_IMAGE
+        PROCESS_UID: $MEVBOOST_UID
+        PROCESS_GID: $MEVBOOST_GID
     expose:
       - 8560
     volumes:
@@ -20,4 +20,5 @@ services:
     depends_on:
       - execution
       - beacon
-
+    networks:
+      - lighthouse_stake

@@ -4,8 +4,10 @@ services:
     build:
       context: ./${EXECUTION_NODE}/build
       args:
-        PROCESS_UID: 1000
-        PROCESS_GID: 1000
+        PROCESS_UID: $EXECUTION_UID
+        PROCESS_GID: $EXECUTION_GID
+        BESU_IMAGE: $BESU_IMAGE
+        NETHERMIND_IMAGE: $NETHERMIND_IMAGE
     environment:
       - EXECUTION_DISC
     ports:
@@ -17,4 +19,5 @@ services:
     volumes:
       - ./${EXECUTION_NODE}/run:/home/execution/run
       - ./shared:/shared
-
+    networks:
+      - lighthouse_stake

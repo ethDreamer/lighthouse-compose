@@ -1,4 +1,5 @@
-FROM hyperledger/besu:22.7.1
+ARG BESU_IMAGE
+FROM ${BESU_IMAGE}
 
 USER root
 RUN apt update && apt install -y tini dnsutils
