@@ -89,7 +89,7 @@ fi
         mkdir -p $MNTPOINT
     fi
 
-    if [ -z ${$VALIDATOR_UID} ]; then
+    if [ -z ${VALIDATOR_UID} ]; then
         echo "Must run \`source ./globals.sh\` before mounting"
         exit 1
     fi
