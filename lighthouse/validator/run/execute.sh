@@ -16,7 +16,7 @@ if [ "$MEVBOOST_ENABLED" = "true" ]; then
     BUILDER_ARG="--private-tx-proposals"
 fi
 
-VALIDATOR_MANAGER=false
+VALIDATOR_MANAGER=true
 if [ "$VALIDATOR_MANAGER" = "true" ]; then
     VM_ARGS="--http-allow-keystore-export --http-store-passwords-in-secrets-dir"
 fi
@@ -29,6 +29,7 @@ exec lighthouse \
     --network mainnet \
     validator_client \
     --http \
+    --gas-limit 36000000 \
     --unencrypted-http-transport \
     --http-address=0.0.0.0 \
     --http-port 5062 \
