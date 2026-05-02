@@ -51,3 +51,21 @@ services:
       - prometheus
     networks:
       - lighthouse_stake
+
+  nut_exporter:
+    image: druggeri/nut_exporter
+    environment:
+      NUT_EXPORTER_PASSWORD: export
+      NUT_EXPORTER_VARIABLES: >
+        battery.charge,battery.runtime,battery.runtime.low,
+        battery.voltage,battery.voltage.nominal,
+        input.voltage,input.voltage.nominal,
+        ups.load,ups.status,ups.realpower.nominal
+    command:
+      - --nut.server=172.17.0.1
+      - --nut.username=prometheus
+    ports:
+      - "127.0.0.1:9199:9199"
+    networks:
+      - lighthouse_stake
+

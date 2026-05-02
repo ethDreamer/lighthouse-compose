@@ -22,8 +22,8 @@ exec lighthouse \
     --datadir ./datadir \
     --network mainnet \
     beacon \
-    --eth1 \
     --http \
+    --gui \
     --discovery-port $CONSENSUS_DISC \
     --port $CONSENSUS_DISC \
     --http-address=0.0.0.0 \

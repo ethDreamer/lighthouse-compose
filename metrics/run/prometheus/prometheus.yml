@@ -12,4 +12,9 @@ scrape_configs:
     static_configs:
       - targets: ['execution:6060']
 
+  - job_name: 'nut'
+    metrics_path: /ups_metrics
+    static_configs:
+      - targets: ['nut_exporter:9199']
+
 

@@ -29,7 +29,6 @@ exec lighthouse \
     --network mainnet \
     validator_client \
     --http \
-    --gas-limit 36000000 \
     --unencrypted-http-transport \
     --http-address=0.0.0.0 \
     --http-port 5062 \
