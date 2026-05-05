@@ -6,6 +6,7 @@ services:
         BASE_IMAGE:  $LIGHTHOUSE_IMAGE
         PROCESS_UID: $BEACON_UID
         PROCESS_GID: $BEACON_GID
+    init: true
     environment:
       - CONSENSUS_DISC
     ports:

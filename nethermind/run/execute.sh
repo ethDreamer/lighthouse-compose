@@ -20,7 +20,6 @@ exec /nethermind/Nethermind.Runner \
     --Merge.Enabled=true \
     --Merge.TerminalTotalDifficulty 58750000000000000000000 \
     --Pruning.Mode=Hybrid \
-    --Blocks.TargetBlockGasLimit 36000000 \
     --Pruning.FullPruningTrigger=VolumeFreeSpace \
     --Pruning.FullPruningThresholdMb=400000 \
     --Pruning.FullPruningMemoryBudgetMb=16384 \

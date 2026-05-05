@@ -12,6 +12,7 @@ services:
         BASE_IMAGE:  $MEVBOOST_IMAGE
         PROCESS_UID: $MEVBOOST_UID
         PROCESS_GID: $MEVBOOST_GID
+    init: true
     expose:
       - 8560
     volumes:

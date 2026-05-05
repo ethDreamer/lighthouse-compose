@@ -7,6 +7,7 @@ services:
         PROCESS_GID: $EXECUTION_GID
         BESU_IMAGE: $BESU_IMAGE
         NETHERMIND_IMAGE: $NETHERMIND_IMAGE
+    init: true
     environment:
       - EXECUTION_DISC
     ports:

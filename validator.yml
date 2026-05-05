@@ -6,6 +6,7 @@ services:
         BASE_IMAGE:  $LIGHTHOUSE_IMAGE
         PROCESS_UID: $VALIDATOR_UID
         PROCESS_GID: $VALIDATOR_GID
+    init: true
     environment:
         - ENCRYPTED_SECRETS_DIRECTORY
         - METRICS_ENABLED
