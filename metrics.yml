@@ -61,11 +61,27 @@ services:
         battery.voltage,battery.voltage.nominal,
         input.voltage,input.voltage.nominal,
         ups.load,ups.status,ups.realpower.nominal
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     command:
-      - --nut.server=172.17.0.1
+      - --nut.server=host.docker.internal
       - --nut.username=prometheus
     ports:
       - "127.0.0.1:9199:9199"
     networks:
       - lighthouse_stake
 
+  node_exporter:
+    image: prom/node-exporter:latest
+    command:
+      - --path.rootfs=/host
+    pid: host
+    restart: unless-stopped
+    volumes:
+      - /:/host:ro,rslave
+    expose:
+      - 9100
+    ports:
+      - "127.0.0.1:9100:9100"
+    networks:
+      - lighthouse_stake
