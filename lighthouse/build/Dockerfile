@@ -6,6 +6,7 @@ ARG PROCESS_GID
 ARG USER=consensus
 
 USER root
+RUN apt-get update && apt-get install -y dnsutils && rm -rf /var/lib/apt/lists/*
 RUN getent group  ${PROCESS_GID} || groupadd -g ${PROCESS_GID} ${USER}
 RUN getent passwd ${PROCESS_UID} || useradd -r -u ${PROCESS_UID} -g ${PROCESS_GID} ${USER};
 
